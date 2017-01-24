@@ -1,29 +1,37 @@
 <?php
 
-class Unidad extends \Phalcon\Mvc\Model
+class Cargo extends \Phalcon\Mvc\Model
 {
 
     /**
      *
-     * @var string
-     * @Primary
-     * @Column(type="string", length=32, nullable=false)
-     */
-    public $unidad_id;
-
-    /**
-     *
      * @var integer
+     * @Primary
+     * @Identity
      * @Column(type="integer", length=11, nullable=false)
      */
-    public $numero;
+    public $cargo_id;
 
     /**
      *
      * @var string
-     * @Column(type="string", length=7, nullable=false)
+     * @Column(type="string", length=200, nullable=false)
      */
-    public $placa;
+    public $cargo;
+
+    /**
+     *
+     * @var string
+     * @Column(type="string", length=25, nullable=false)
+     */
+    public $codigo;
+
+    /**
+     *
+     * @var string
+     * @Column(type="string", nullable=true)
+     */
+    public $descripcion;
 
     /**
      *
@@ -33,18 +41,11 @@ class Unidad extends \Phalcon\Mvc\Model
     public $activo;
 
     /**
-     *
-     * @var string
-     * @Column(type="string", length=32, nullable=false)
-     */
-    public $responsable_id;
-
-    /**
      * Initialize method for model.
      */
     public function initialize()
     {
-        $this->belongsTo('responsable_id', 'Persona', 'persona_id', ['alias' => 'Persona']);
+        $this->hasMany('cargo_id', 'Empleado', 'cargo_id', ['alias' => 'Empleado']);
     }
 
     /**
@@ -54,14 +55,14 @@ class Unidad extends \Phalcon\Mvc\Model
      */
     public function getSource()
     {
-        return 'unidad';
+        return 'cargo';
     }
 
     /**
      * Allows to query a set of records that match the specified conditions
      *
      * @param mixed $parameters
-     * @return Unidad[]
+     * @return Cargo[]
      */
     public static function find($parameters = null)
     {
@@ -72,7 +73,7 @@ class Unidad extends \Phalcon\Mvc\Model
      * Allows to query the first record that match the specified conditions
      *
      * @param mixed $parameters
-     * @return Unidad
+     * @return Cargo
      */
     public static function findFirst($parameters = null)
     {

@@ -1,0 +1,124 @@
+<?php
+/**
+ * @var \Phalcon\Mvc\View\Engine\Php $this
+ */
+?>
+
+<div class="row">
+    <nav>
+        <ul class="pager">
+            <li class="previous"><?php echo $this->tag->linkTo(["persona", "Go Back"]) ?></li>
+        </ul>
+    </nav>
+</div>
+
+<div class="page-header">
+    <h1>
+        Create persona
+    </h1>
+</div>
+
+<?php echo $this->getContent(); ?>
+
+<?php
+    echo $this->tag->form(
+        [
+            "persona/create",
+            "autocomplete" => "off",
+            "class" => "form-horizontal"
+        ]
+    );
+?>
+
+<div class="form-group">
+    <label for="fieldPersonaId" class="col-sm-2 control-label">Persona</label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(["persona_id", "size" => 30, "class" => "form-control", "id" => "fieldPersonaId"]) ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="fieldNombres" class="col-sm-2 control-label">Nombres</label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(["nombres", "size" => 30, "class" => "form-control", "id" => "fieldNombres"]) ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="fieldApellidos" class="col-sm-2 control-label">Apellidos</label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(["apellidos", "size" => 30, "class" => "form-control", "id" => "fieldApellidos"]) ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="fieldDni" class="col-sm-2 control-label">Dni</label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->selectStatic(["dni", [], "class" => "form-control", "id" => "fieldDni"]) ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="fieldDireccion" class="col-sm-2 control-label">Direccion</label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(["direccion", "size" => 30, "class" => "form-control", "id" => "fieldDireccion"]) ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="fieldFechaNacimiento" class="col-sm-2 control-label">Fecha Of Nacimiento</label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(["fecha_nacimiento", "type" => "date", "class" => "form-control", "id" => "fieldFechaNacimiento"]) ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="fieldTelefonoFijo" class="col-sm-2 control-label">Telefono Of Fijo</label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(["telefono_fijo", "size" => 30, "class" => "form-control", "id" => "fieldTelefonoFijo"]) ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="fieldTelefonoMovil" class="col-sm-2 control-label">Telefono Of Movil</label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(["telefono_movil", "size" => 30, "class" => "form-control", "id" => "fieldTelefonoMovil"]) ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="fieldEstadoCivil" class="col-sm-2 control-label">Estado Of Civil</label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(["estado_civil", "size" => 30, "class" => "form-control", "id" => "fieldEstadoCivil"]) ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="fieldActivo" class="col-sm-2 control-label">Activo</label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(["activo", "size" => 30, "class" => "form-control", "id" => "fieldActivo"]) ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="fieldFechaCreacion" class="col-sm-2 control-label">Fecha Of Creacion</label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(["fecha_creacion", "size" => 30, "class" => "form-control", "id" => "fieldFechaCreacion"]) ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="fieldUsuarioCreacion" class="col-sm-2 control-label">Usuario Of Creacion</label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(["usuario_creacion", "size" => 30, "class" => "form-control", "id" => "fieldUsuarioCreacion"]) ?>
+    </div>
+</div>
+
+
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+        <?php echo $this->tag->submitButton(["Save", "class" => "btn btn-default"]) ?>
+    </div>
+</div>
+
+<?php echo $this->tag->endForm(); ?>

@@ -1,0 +1,85 @@
+<?php
+/**
+ * @var \Phalcon\Mvc\View\Engine\Php $this
+ */
+?>
+
+<?php use Phalcon\Tag; ?>
+
+<div class="row">
+    <nav>
+        <ul class="pager">
+            <li class="previous"><?php echo $this->tag->linkTo(["persona/index", "Go Back"]); ?></li>
+            <li class="next"><?php echo $this->tag->linkTo(["persona/new", "Create "]); ?></li>
+        </ul>
+    </nav>
+</div>
+
+<div class="page-header">
+    <h1>Search result</h1>
+</div>
+
+<?php echo $this->getContent(); ?>
+
+<div class="row">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Persona</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Dni</th>
+            <th>Direccion</th>
+            <th>Fecha Of Nacimiento</th>
+            <th>Telefono Of Fijo</th>
+            <th>Telefono Of Movil</th>
+            <th>Estado Of Civil</th>
+            <th>Activo</th>
+            <th>Fecha Of Creacion</th>
+            <th>Usuario Of Creacion</th>
+
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($page->items as $persona): ?>
+            <tr>
+                <td><?php echo $persona->persona_id ?></td>
+            <td><?php echo $persona->nombres ?></td>
+            <td><?php echo $persona->apellidos ?></td>
+            <td><?php echo $persona->dni ?></td>
+            <td><?php echo $persona->direccion ?></td>
+            <td><?php echo $persona->fecha_nacimiento ?></td>
+            <td><?php echo $persona->telefono_fijo ?></td>
+            <td><?php echo $persona->telefono_movil ?></td>
+            <td><?php echo $persona->estado_civil ?></td>
+            <td><?php echo $persona->activo ?></td>
+            <td><?php echo $persona->fecha_creacion ?></td>
+            <td><?php echo $persona->usuario_creacion ?></td>
+
+                <td><?php echo $this->tag->linkTo(["persona/edit/" . $persona->persona_id, "Edit"]); ?></td>
+                <td><?php echo $this->tag->linkTo(["persona/delete/" . $persona->persona_id, "Delete"]); ?></td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
+
+<div class="row">
+    <div class="col-sm-1">
+        <p class="pagination" style="line-height: 1.42857;padding: 6px 12px;">
+            <?php echo $page->current, "/", $page->total_pages ?>
+        </p>
+    </div>
+    <div class="col-sm-11">
+        <nav>
+            <ul class="pagination">
+                <li><?php echo $this->tag->linkTo("persona/search", "First") ?></li>
+                <li><?php echo $this->tag->linkTo("persona/search?page=" . $page->before, "Previous") ?></li>
+                <li><?php echo $this->tag->linkTo("persona/search?page=" . $page->next, "Next") ?></li>
+                <li><?php echo $this->tag->linkTo("persona/search?page=" . $page->last, "Last") ?></li>
+            </ul>
+        </nav>
+    </div>
+</div>
